@@ -1,4 +1,4 @@
-import usersQuery from "../query/user.query.js";
+import usersQuery from "../query/user.query";
 
 const userService = {
   getUserByEmail: (userEmail) => {
