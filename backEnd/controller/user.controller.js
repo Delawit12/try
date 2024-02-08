@@ -1,7 +1,10 @@
 import userService from "../service/user.services.js";
+import userUtility from "../utility/user.utility.js";
+import bcrypt from "bcrypt";
 const userController = {
   registerUser: async (req, res) => {
     const { userEmail, userPassword, userPhone } = req.body;
+    console.log(req.body);
     // Check all fields
     if (!userEmail || !userPassword || !userPhone) {
       return res.status(400).json({
@@ -33,7 +36,7 @@ const userController = {
       const saltRounds = 10; // Specify a number of rounds
       const salt = bcrypt.genSaltSync(saltRounds);
       req.body.userPassword = bcrypt.hashSync(userPassword, salt);
-      // Generate OTP
+      //Generate OTP
       const OTP = userUtility.generateDigitOTP();
       req.body.OTP = OTP;
 

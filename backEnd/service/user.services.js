@@ -1,4 +1,5 @@
-import usersQuery from "../query/user.query";
+import { query } from "../config/pool.js";
+import usersQuery from "../query/user.query.js";
 
 const userService = {
   getUserByEmail: (userEmail) => {
@@ -7,6 +8,22 @@ const userService = {
   },
   getUserByPhone: (userPhone) => {
     const rows = query(usersQuery.getUserByPhone, [userPhone]);
+
+    return rows;
+  },
+  addUserPassword: (data) => {
+    const rows = query(usersQuery.insertUserPasswordTableQuery, [
+      data.userId,
+      data.userPassword,
+    ]);
+    return rows; // Add the return statement
+  },
+  registerUser: (data) => {
+    const rows = query(usersQuery.insertUsersTableQuery, [
+      data.userEmail,
+      data.userPhone,
+      data.OTP,
+    ]);
     return rows;
   },
   getUserPasswordByUserId: (userId) => {

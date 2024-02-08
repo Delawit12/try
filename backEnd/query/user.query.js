@@ -1,6 +1,8 @@
 export default {
   getUserByEmailQuery: `SELECT * FROM users WHERE userEmail=? `,
   getUserByPhone: `SELECT * FROM users WHERE userPhone=?`,
+  insertUsersTableQuery: `INSERT INTO users (userEmail, userPhone, createdDate, OTP, activeStatus)  VALUES (?, ?, NOW(),?, 1)`,
+  insertUserPasswordTableQuery: `INSERT INTO usersPassword (userId,userPassword,createdDate) VALUES(?,?,NOW())`,
   getUserPasswordByUserIdQuery: `SELECT * FROM userPassword WHERE userId=?`,
   getAllUsersQuery: `SELECT
   users.userId,

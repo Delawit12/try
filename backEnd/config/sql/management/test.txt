@@ -1,0 +1,13 @@
+give me sql quesy that select * list of post {
+    postId 
+    userId,userEmail,fname,lname,mname,
+   propertyName,
+   houseType,governmentShare,
+    residenceHouseId[houseType]
+     businessHouseId[houseType]
+    numbersOfBedRoom
+  
+   city,subcity district,street,
+    createDate 
+
+}
