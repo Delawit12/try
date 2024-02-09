@@ -3,7 +3,13 @@ export default {
   addUserProfileQuery: `INSERT INTO usersProfile(userId, firstName, middleName, lastName)VALUES (?, ?, ?, ?);`,
   addUserAddressQuery: `INSERT INTO usersAddress (userId, districtId, createdDate)
     VALUES (?, ?, NOW());`,
+  removeUserAddressQuery: `DELETE FROM usersAddress
+    WHERE userId = ?;
+    `,
   updateToProfileQuery: `UPDATE usersProfile SET firstName=?,middleName=?,lastName=? WHERE userId =?`,
+  removeUserProfileQuery: `DELETE FROM usersProfile
+  WHERE userId = ?;
+  `,
   getAllSingleUserInfo: `
 
         SELECT 

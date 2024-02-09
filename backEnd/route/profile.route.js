@@ -8,10 +8,10 @@ profileRout.put(
   "/api/profile/updateProfile:userId",
   profileController.updateProfile
 );
-// profileRout.delete(
-//   "/api/profile/removeProfile:userId",
-//   profileController.removeProfile
-// );
+profileRout.delete(
+  "/api/profile/removeProfile:userId",
+  profileController.removeProfile
+);
 profileRout.get(
   "/api/profile/getSingleUserProfile",
   profileController.getProfileInfo

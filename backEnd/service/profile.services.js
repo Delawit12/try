@@ -43,6 +43,28 @@ const profileService = {
       return false;
     }
   },
+  removeUserAddress: async (data) => {
+    try {
+      const row = await query(profileQuery.removeUserAddressQuery, [
+        parseInt(data),
+      ]);
+      return row;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  },
+  removeUserProfile: async (data) => {
+    try {
+      const row = await query(profileQuery.removeUserProfileQuery, [
+        parseInt(data),
+      ]);
+      return row;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  },
   getSingleUserProfileInfo: async (data) => {
     try {
       const row = await query(profileQuery.getAllSingleUserInfo, [data]);

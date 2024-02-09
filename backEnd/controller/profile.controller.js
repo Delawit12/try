@@ -106,5 +106,52 @@ const profileController = {
       });
     }
   },
+  removeProfile: async (req, res, next) => {
+    const userId = req.params.userId;
+    // check all fields are sent
+    if (!userId) {
+      return res.status(500).json({
+        status: "false",
+        message: "all fields are reqired",
+      });
+    }
+    // delate profile info
+    const isUserAddressRemoved = profileService.removeUserAddress(
+      parseInt(userId)
+    );
+    if (isUserAddressRemoved) {
+      const isUserProfileRemoved = profileService.removeUserProfile(
+        parseInt(userId)
+      );
+      if (isUserProfileRemoved) {
+        return res.status(200).json({
+          status: "true",
+          message: "user profile removed successfully",
+        });
+      }
+    }
+    return res.status(500).json({
+      status: "false",
+      message: "error during user profile removed",
+    });
+  },
+  getProfileInfo: async (req, res, next) => {
+    const userId = req.body.userId;
+    if (userId) {
+      console.log(userId);
+      const userData = await profileService.getSingleUserProfileInfo(userId);
+      if (userData) {
+        return res.status(200).json({
+          status: true,
+          data: userData,
+        });
+      }
+    } else {
+      res.status(500).json({
+        status: false,
+        message: "invalid taken 000",
+      });
+    }
+  },
 };
 export default profileController;
